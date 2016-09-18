@@ -2,7 +2,7 @@ package com.e2open.datahub;
 
 import org.junit.Test;
 
-public class E2openE2DhApplicationTest {
+public class DXApplicationTest {
 
     @Test
     public void contextLoads() {
