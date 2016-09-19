@@ -13,4 +13,17 @@
     <artifactId>core-impl</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.e2open.datahub.core</groupId>
+            <artifactId>core-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <scm>
+        <url>scm:svn:${svn.rootdir}/trunk/core/core-impl</url>
+        <connection>scm:svn:${svn.rootdir}/trunk/core/core-impl</connection>
+    </scm>
+
 </project>

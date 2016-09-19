@@ -19,7 +19,31 @@
             <artifactId>core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.e2open.datahub.core</groupId>
+            <artifactId>core-impl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.e2open.datahub.core</groupId>
+            <artifactId>core-tools</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <profiles>
+                        <profile>dev</profile>
+                    </profiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <scm>
         <url>scm:svn:${svn.rootdir}/trunk/core/webui</url>

@@ -25,5 +25,9 @@
         <module>package</module>
     </modules>
 
+    <scm>
+        <url>scm:svn:${svn.rootdir}/trunk/core</url>
+        <connection>scm:svn:${svn.rootdir}/trunk/core</connection>
+    </scm>
 
 </project>
