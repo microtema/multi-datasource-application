@@ -20,6 +20,8 @@
 
     <modules>
         <module>core</module>
+        <module>interconnect-client</module>
+        <module>deploy</module>
     </modules>
 
     <properties>
@@ -32,6 +34,10 @@
 
         <commons.lang3.version>3.4</commons.lang3.version>
         <skip.integration-tests>false</skip.integration-tests>
+
+        <svn.rootdir>svn://ironman/E2DataHub/dev/17.x</svn.rootdir>
+        <!-- The main class to start by executing java -jar -->
+        <start-class>com.e2open.datahub.DXApplication</start-class>
     </properties>
 
     <organization>
@@ -78,7 +84,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
@@ -120,10 +125,18 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <skipTest>${skip.integration-tests}</skipTest>
+                            <skip>${skip.integration-tests}</skip>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

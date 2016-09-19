@@ -10,20 +10,7 @@
         <version>17.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>webui</artifactId>
-    <packaging>war</packaging>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.e2open.datahub.core</groupId>
-            <artifactId>core-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
-
-    <scm>
-        <url>scm:svn:${svn.rootdir}/trunk/core/webui</url>
-        <connection>scm:svn:${svn.rootdir}/trunk/core/webui</connection>
-    </scm>
+    <artifactId>core-api</artifactId>
+    <packaging>jar</packaging>
 
 </project>

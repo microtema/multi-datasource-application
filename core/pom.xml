@@ -11,12 +11,18 @@
     </parent>
 
     <artifactId>core</artifactId>
+    <groupId>com.e2open.datahub.core</groupId>
     <packaging>pom</packaging>
 
     <properties/>
 
     <modules>
+        <module>core-api</module>
+        <module>core-impl</module>
+        <module>core-tools</module>
         <module>webui</module>
+        <module>e2dh-ums</module>
+        <module>package</module>
     </modules>
 
 
