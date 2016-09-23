@@ -39,7 +39,7 @@ public class CoreImpl {
 
         try {
             Connection connection = metadataDataSource.getConnection();
-            connection.createStatement().execute("VALUES 1");
+            connection.createStatement().execute("select 1");
             LOGGER.info("metadata connection successfully established");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class CoreImpl {
 
         try {
             Connection connection = stagingDataSource.getConnection();
-            connection.createStatement().execute("VALUES 1");
+            connection.createStatement().execute("select 1");
             LOGGER.info("staging connection successfully established");
         } catch (SQLException e) {
             e.printStackTrace();
