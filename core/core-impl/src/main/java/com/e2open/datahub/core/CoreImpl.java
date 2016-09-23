@@ -26,8 +26,10 @@ public class CoreImpl {
 
     @Autowired
     private DatasourceConfig stagingDatasourceConfig;
+
     @Autowired
     private DataSource metadataDataSource;
+
     @Autowired
     private DataSource stagingDataSource;
 
