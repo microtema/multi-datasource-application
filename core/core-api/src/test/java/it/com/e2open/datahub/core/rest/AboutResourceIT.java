@@ -1,8 +1,6 @@
 package it.com.e2open.datahub.core.rest;
 
-import com.e2open.datahub.core.rest.AboutResource;
-import com.e2open.datahub.core.rest.DXResourceConfig;
-import it.com.e2open.datahub.core.TestDXApplication;
+import com.e2open.datahub.DXApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +15,7 @@ import java.util.Collections;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {TestDXApplication.class, AboutResource.class, DXResourceConfig.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {DXApplication.class})
 public class AboutResourceIT {
 
     @Inject

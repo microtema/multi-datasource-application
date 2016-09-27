@@ -1,7 +1,7 @@
 package com.e2open.datahub.core;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 @Component
 public class CoreApi {
 
-    private static final Logger LOGGER = LogManager.getLogger(CoreApi.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CoreApi.class);
 
     @Value("${com.e2open.datahub.core.api}")
     private String property;

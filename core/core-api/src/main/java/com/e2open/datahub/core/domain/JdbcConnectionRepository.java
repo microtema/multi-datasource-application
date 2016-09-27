@@ -1,10 +1,8 @@
-package com.e2open.datahub.core;
+package com.e2open.datahub.core.domain;
 
-import com.e2open.datahub.core.persistence.DatasourceConfig;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -14,18 +12,9 @@ import java.sql.SQLException;
 
 
 @Component
-public class CoreImpl {
+public class JdbcConnectionRepository {
 
-    private static final Logger LOGGER = LogManager.getLogger(CoreImpl.class);
-
-    @Value("${com.e2open.datahub.core.api}")
-    private String property;
-
-    @Autowired
-    private DatasourceConfig metadataDatasourceConfig;
-
-    @Autowired
-    private DatasourceConfig stagingDatasourceConfig;
+    private static final Logger LOGGER = LoggerFactory.getLogger(JdbcConnectionRepository.class);
 
     @Autowired
     private DataSource metadataDataSource;
@@ -33,24 +22,24 @@ public class CoreImpl {
     @Autowired
     private DataSource stagingDataSource;
 
+
     @PostConstruct
     public void init() {
-        LOGGER.info("init: " + property);
 
         try {
             Connection connection = metadataDataSource.getConnection();
-            connection.createStatement().execute("select 1");
+            connection.createStatement().execute("select * metadata_person");
             LOGGER.info("metadata connection successfully established");
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.warn("metadata connection failed");
         }
 
         try {
             Connection connection = stagingDataSource.getConnection();
-            connection.createStatement().execute("select 1");
+            connection.createStatement().execute("select * from staging_person");
             LOGGER.info("staging connection successfully established");
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.warn("staging connection failed");
         }
     }
 }
