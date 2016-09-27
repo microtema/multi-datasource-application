@@ -1,4 +1,4 @@
-package com.e2open.datahub.core.domain.metadata;
+package com.e2open.datahub.staging.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,8 +16,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MetadataPerson {
-
+public class StagingOrder {
 
     @Id
     @GeneratedValue
@@ -26,5 +25,4 @@ public class MetadataPerson {
     private String firstName;
 
     private String lastName;
-
 }

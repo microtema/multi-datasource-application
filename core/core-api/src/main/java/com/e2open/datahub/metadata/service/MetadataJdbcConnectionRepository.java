@@ -1,4 +1,4 @@
-package com.e2open.datahub.core.domain;
+package com.e2open.datahub.metadata.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,34 +12,22 @@ import java.sql.SQLException;
 
 
 @Component
-public class JdbcConnectionRepository {
+public class MetadataJdbcConnectionRepository {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JdbcConnectionRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MetadataJdbcConnectionRepository.class);
 
     @Autowired
     private DataSource metadataDataSource;
-
-    @Autowired
-    private DataSource stagingDataSource;
-
 
     @PostConstruct
     public void init() {
 
         try {
             Connection connection = metadataDataSource.getConnection();
-            connection.createStatement().execute("select * metadata_person");
+            boolean execute = connection.createStatement().execute("select * FROM metadataperson");
             LOGGER.info("metadata connection successfully established");
         } catch (SQLException e) {
             LOGGER.warn("metadata connection failed");
-        }
-
-        try {
-            Connection connection = stagingDataSource.getConnection();
-            connection.createStatement().execute("select * from staging_person");
-            LOGGER.info("staging connection successfully established");
-        } catch (SQLException e) {
-            LOGGER.warn("staging connection failed");
         }
     }
 }
