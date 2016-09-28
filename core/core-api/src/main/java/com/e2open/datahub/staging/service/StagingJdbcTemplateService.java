@@ -1,8 +1,7 @@
 package com.e2open.datahub.staging.service;
 
 import com.e2open.datahub.staging.entity.StagingPerson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,12 +12,9 @@ import javax.annotation.PostConstruct;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static java.lang.System.out;
-
+@Slf4j
 @Service
 public class StagingJdbcTemplateService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(StagingJdbcTemplateService.class);
 
 
     @Autowired
@@ -28,9 +24,9 @@ public class StagingJdbcTemplateService {
     @PostConstruct
     public void init() {
 
-        jdbcTemplate.query("SELECT * FROM StagingPerson", new CustomerRowMapper()).forEach(out::println);
+        jdbcTemplate.query("SELECT * FROM StagingPerson", new CustomerRowMapper()).forEach(stagingPerson -> log.info(stagingPerson.toString()));
 
-        jdbcTemplate.queryForList("SELECT id FROM StagingPerson", Long.class).forEach(out::println);
+        jdbcTemplate.queryForList("SELECT id FROM StagingPerson", Long.class).forEach(stagingPerson -> log.info(stagingPerson.toString()));
     }
 
     private static class CustomerRowMapper implements RowMapper<StagingPerson> {

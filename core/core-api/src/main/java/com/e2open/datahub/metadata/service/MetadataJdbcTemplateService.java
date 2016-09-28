@@ -1,6 +1,7 @@
 package com.e2open.datahub.metadata.service;
 
 import com.e2open.datahub.metadata.entity.MetadataPerson;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import static java.lang.System.out;
 
 @Service
+@Slf4j
 public class MetadataJdbcTemplateService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MetadataJdbcTemplateService.class);
@@ -28,7 +30,6 @@ public class MetadataJdbcTemplateService {
     public void init() {
 
         jdbcTemplate.query("SELECT * FROM metadataperson", new CustomerRowMapper()).forEach(out::println);
-
     }
 
     private static class CustomerRowMapper implements RowMapper<MetadataPerson> {

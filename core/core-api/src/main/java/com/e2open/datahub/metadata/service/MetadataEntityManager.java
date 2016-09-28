@@ -1,6 +1,7 @@
 package com.e2open.datahub.metadata.service;
 
 import com.e2open.datahub.metadata.entity.MetadataPerson;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+@Slf4j
 @Service
 public class MetadataEntityManager {
 
@@ -32,6 +34,6 @@ public class MetadataEntityManager {
 
         MetadataPerson entity = entityManager.find(MetadataPerson.class, 1l);
 
-        System.out.println(entity);
+        log.info(entity + "");
     }
 }

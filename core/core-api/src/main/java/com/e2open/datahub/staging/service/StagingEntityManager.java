@@ -27,6 +27,6 @@ public class StagingEntityManager {
 
         StagingPerson entity = entityManager.find(StagingPerson.class, 1l);
 
-        System.out.println(entity);
+        log.info(entity + "");
     }
 }

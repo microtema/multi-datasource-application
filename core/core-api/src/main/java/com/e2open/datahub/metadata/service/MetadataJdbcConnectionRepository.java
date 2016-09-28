@@ -1,7 +1,6 @@
 package com.e2open.datahub.metadata.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +11,8 @@ import java.sql.SQLException;
 
 
 @Component
+@Slf4j
 public class MetadataJdbcConnectionRepository {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MetadataJdbcConnectionRepository.class);
 
     @Autowired
     private DataSource metadataDataSource;
@@ -25,9 +23,9 @@ public class MetadataJdbcConnectionRepository {
         try {
             Connection connection = metadataDataSource.getConnection();
             boolean execute = connection.createStatement().execute("select * FROM metadataperson");
-            LOGGER.info("metadata connection successfully established");
+            log.info("metadata connection successfully established");
         } catch (SQLException e) {
-            LOGGER.warn("metadata connection failed");
+            log.warn("metadata connection failed");
         }
     }
 }

@@ -2,17 +2,15 @@ package com.e2open.datahub.staging.service;
 
 import com.e2open.datahub.staging.dao.StagingPersonRepository;
 import com.e2open.datahub.staging.entity.StagingPerson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+@Slf4j
 @Service
 public class StagingCrudRepositoryService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(StagingCrudRepositoryService.class);
 
     @Inject
     private StagingPersonRepository repository;
@@ -26,14 +24,14 @@ public class StagingCrudRepositoryService {
         StagingPerson saved = repository.save(stagingPerson);
 
         // fetch all stagingPersons
-        LOGGER.info("Staging# Person found with findAll():");
+        log.info("Staging# Person found with findAll():");
         repository.findAll().forEach(person -> {
-            LOGGER.info(person.toString());
+            log.info(person.toString());
         });
 
-        LOGGER.info("Staging# Person found with findByLastName('Tema'):");
+        log.info("Staging# Person found with findByLastName('Tema'):");
         repository.findByLastName("Tema").forEach(person -> {
-            LOGGER.info(person.toString());
+            log.info(person.toString());
         });
     }
 
