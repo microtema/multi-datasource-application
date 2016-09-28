@@ -28,7 +28,7 @@ public class MetadataEntityManager {
     @Transactional("metadataTransactionManager")
     public void init() {
 
-        entityManager.persist(metadataPerson);
+        //entityManager.persist(metadataPerson);
 
         MetadataPerson entity = entityManager.find(MetadataPerson.class, 1l);
 

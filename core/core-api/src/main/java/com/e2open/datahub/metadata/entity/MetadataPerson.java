@@ -1,9 +1,6 @@
 package com.e2open.datahub.metadata.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Builder;
 
 import javax.persistence.Entity;
@@ -16,6 +13,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = "id")
 public class MetadataPerson {
 
 
