@@ -7,7 +7,7 @@
     <parent>
         <artifactId>e2dh</artifactId>
         <groupId>com.e2open.datahub</groupId>
-        <version>17.1-SNAPSHOT</version>
+        <version>17.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.e2open.datahub.deploy</groupId>

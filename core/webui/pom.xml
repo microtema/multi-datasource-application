@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.e2open.datahub.core</groupId>
         <artifactId>core</artifactId>
-        <version>17.1-SNAPSHOT</version>
+        <version>17.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>webui</artifactId>
@@ -15,17 +15,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.e2open.datahub.core</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.e2open.datahub.core</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>core-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.e2open.datahub.core</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>core-tools</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -36,6 +36,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.e2open.datahub.DXApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
