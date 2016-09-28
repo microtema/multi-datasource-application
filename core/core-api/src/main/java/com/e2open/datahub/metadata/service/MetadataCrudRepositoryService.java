@@ -14,7 +14,7 @@ public class MetadataCrudRepositoryService {
 
 
     @Inject
-    private MetadataPersonRepository repository;
+    private MetadataPersonRepository metadataPersonRepository;
 
     private MetadataPerson metadataPerson = MetadataPerson.builder().firstName("Metadata").lastName("Tema").build();
 
@@ -22,16 +22,16 @@ public class MetadataCrudRepositoryService {
     private void init() {
 
         // save metadataPerson
-        MetadataPerson saved = repository.save(metadataPerson);
+        MetadataPerson saved = metadataPersonRepository.save(metadataPerson);
 
         // fetch all metadataPersons
         log.info("Metadata# Person found with findAll():");
-        repository.findAll().forEach(person -> {
+        metadataPersonRepository.findAll().forEach(person -> {
             log.info(person.toString());
         });
 
         log.info("Metadata# Person found with findByLastName('Tema'):");
-        repository.findByLastName("Tema").forEach(person -> {
+        metadataPersonRepository.findByLastName("Tema").forEach(person -> {
             log.info(person.toString());
         });
     }

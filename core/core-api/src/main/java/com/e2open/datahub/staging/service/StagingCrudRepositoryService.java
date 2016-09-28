@@ -12,6 +12,7 @@ import javax.inject.Inject;
 @Service
 public class StagingCrudRepositoryService {
 
+
     @Inject
     private StagingPersonRepository repository;
 
@@ -34,5 +35,4 @@ public class StagingCrudRepositoryService {
             log.info(person.toString());
         });
     }
-
 }

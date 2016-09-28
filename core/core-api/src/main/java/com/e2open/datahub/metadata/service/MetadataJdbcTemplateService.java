@@ -4,7 +4,6 @@ import com.e2open.datahub.metadata.entity.MetadataPerson;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -23,16 +22,15 @@ public class MetadataJdbcTemplateService {
     private static final Logger LOGGER = LoggerFactory.getLogger(MetadataJdbcTemplateService.class);
 
     @Inject
-    @Qualifier("metadataJdbcTemplate")
-    private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate metadataJdbcTemplate;
 
     @PostConstruct
     public void init() {
 
-        jdbcTemplate.query("SELECT * FROM metadataperson", new CustomerRowMapper()).forEach(out::println);
+        metadataJdbcTemplate.query("SELECT * FROM metadataperson", new CustomerRowMapper()).forEach(out::println);
     }
 
-    private static class CustomerRowMapper implements RowMapper<MetadataPerson> {
+    public static class CustomerRowMapper implements RowMapper<MetadataPerson> {
         @Override
         public MetadataPerson mapRow(ResultSet rs, int rowNum) throws SQLException {
 

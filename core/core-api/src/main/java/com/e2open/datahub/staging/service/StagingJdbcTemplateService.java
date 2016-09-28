@@ -2,13 +2,12 @@ package com.e2open.datahub.staging.service;
 
 import com.e2open.datahub.staging.entity.StagingPerson;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -17,19 +16,18 @@ import java.sql.SQLException;
 public class StagingJdbcTemplateService {
 
 
-    @Autowired
-    @Qualifier("stagingJdbcTemplate")
-    private JdbcTemplate jdbcTemplate;
+    @Inject
+    private JdbcTemplate stagingJdbcTemplate;
 
     @PostConstruct
     public void init() {
 
-        jdbcTemplate.query("SELECT * FROM StagingPerson", new CustomerRowMapper()).forEach(stagingPerson -> log.info(stagingPerson.toString()));
+        stagingJdbcTemplate.query("SELECT * FROM StagingPerson", new CustomerRowMapper()).forEach(stagingPerson -> log.info(stagingPerson.toString()));
 
-        jdbcTemplate.queryForList("SELECT id FROM StagingPerson", Long.class).forEach(stagingPerson -> log.info(stagingPerson.toString()));
+        stagingJdbcTemplate.queryForList("SELECT id FROM StagingPerson", Long.class).forEach(stagingPerson -> log.info(stagingPerson.toString()));
     }
 
-    private static class CustomerRowMapper implements RowMapper<StagingPerson> {
+    public static class CustomerRowMapper implements RowMapper<StagingPerson> {
         @Override
         public StagingPerson mapRow(ResultSet rs, int rowNum) throws SQLException {
 
