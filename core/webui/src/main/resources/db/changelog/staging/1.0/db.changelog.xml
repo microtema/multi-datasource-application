@@ -2,7 +2,7 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet author="mtema (generated)" id="0001" failOnError="false">
+    <changeSet author="mtema" id="0001" failOnError="false">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="ACCESS_LOG"/>
@@ -10,7 +10,7 @@
         </preConditions>
         <dropTable tableName="ACCESS_LOG"/>
     </changeSet>
-    <changeSet author="mtema (generated)" id="0002">
+    <changeSet author="mtema" id="0002">
         <createTable tableName="ACCESS_LOG">
             <column name="USER_NAME" type="VARCHAR(80)">
                 <constraints nullable="false"/>
@@ -32,7 +32,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="mtema (generated)" id="0003">
-        <loadData tableName="ACCESS_LOG" file="db/changelog/metadata/1.0/ACCESS_LOG.data"/>
+    <changeSet author="mtema" id="0003">
+        <loadData tableName="ACCESS_LOG" file="db/changelog/staging/1.0/ACCESS_LOG.data"/>
     </changeSet>
 </databaseChangeLog>
