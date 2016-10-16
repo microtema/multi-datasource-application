@@ -101,20 +101,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!--dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-        </dependency-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4-1206-jdbc42</version>
-            <scope>compile</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -128,19 +114,22 @@
             <scope>test</scope>
         </dependency>
 
-        <!--
-         When you simply run the application,
-         Spring Boot will use its embedded tomcat server to run your application.
-         If you're planning to use another standalone tomcat server to deploy your boot application,
-         first you should tell your build tool to package your application as a war not jar.
-         Then modify your main boot application entry point to support that and finally
-         deploy your war file to your tomcat server either by using Intellij or manually.
-         -->
         <!--dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
         </dependency-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4-1206-jdbc42</version>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- Starter for building RESTful web applications using JAX-RS and Jersey -->
         <dependency>
@@ -217,7 +206,7 @@
             </activation>
             <properties>
                 <skip.integration-tests>false</skip.integration-tests>
-                <spring.profiles.active>dev</spring.profiles.active>
+                <spring.profiles.active>prod</spring.profiles.active>
             </properties>
         </profile>
         <profile>
