@@ -1,0 +1,38 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="mtema" id="0001" failOnError="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ACCESS_LOG"/>
+            </not>
+        </preConditions>
+        <dropTable tableName="ACCESS_LOG"/>
+    </changeSet>
+    <changeSet author="mtema" id="0002">
+        <createTable tableName="ACCESS_LOG">
+            <column name="USER_NAME" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EVENT_DATE" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PATH" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="METHOD" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HEADERS" type="CLOB(2147483647)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtema" id="0003">
+        <loadData tableName="ACCESS_LOG" file="db/changelog/staging/1.0/ACCESS_LOG.data"/>
+    </changeSet>
+</databaseChangeLog>

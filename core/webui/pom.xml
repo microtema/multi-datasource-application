@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.e2open.datahub.core</groupId>
+        <artifactId>core</artifactId>
+        <version>17.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>webui</artifactId>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>core-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>core-impl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>core-tools</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.e2open.datahub.DXApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>liquibase</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>3.0.5</version>
+                        <executions>
+                            <execution>
+                                <id>metadata</id>
+                                <phase>process-resources</phase>
+                                <configuration>
+                                    <changeLogFile>/src/main/resources/db/changelog/metadata/db.changelog-master.xml</changeLogFile>
+                                    <driver>org.postgresql.Driver</driver>
+                                    <url>jdbc:postgresql://localhost:5432/APP</url>
+                                    <username>postgres</username>
+                                    <password>postgres</password>
+                                </configuration>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>staging</id>
+                                <phase>process-resources</phase>
+                                <configuration>
+                                    <changeLogFile>/src/main/resources/db/changelog/staging/db.changelog-master.xml</changeLogFile>
+                                    <driver>org.postgresql.Driver</driver>
+                                    <url>jdbc:postgresql://localhost:5432/APP_ST</url>
+                                    <username>postgres</username>
+                                    <password>postgres</password>
+                                </configuration>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <scm>
+        <url>scm:svn:${svn.rootdir}/trunk/core/webui</url>
+        <connection>scm:svn:${svn.rootdir}/trunk/core/webui</connection>
+    </scm>
+
+</project>

@@ -1,0 +1,2 @@
+USER_NAME,EVENT_DATE,PATH,METHOD,STATUS,HEADERS
+username,now(),pathname,methodname,STATUS,NULL
