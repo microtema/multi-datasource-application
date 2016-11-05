@@ -1,2 +1,2 @@
-# E2DX
-Spring Boot Application with multiple DataSources
+# multi-module-application
+multi-datasource-application
